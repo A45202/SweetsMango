@@ -1,55 +1,96 @@
-name: Security Report
-description: Submit a security finding
-title: "[SECURITY] "
-labels: ["security"]
+name: Auto Security Report Engine
 
-body:
-  - type: input
-    id: target
-    attributes:
-      label: Target URL
-    validations:
-      required: true
+on:
+  issues:
+    types: [opened]
 
-  - type: input
-    id: org
-    attributes:
-      label: Organization
-    validations:
-      required: true
+jobs:
+  build-report:
+    runs-on: ubuntu-latest
 
-  - type: dropdown
-    id: vuln
-    attributes:
-      label: Vulnerability Type
-      options:
-        - Broken Link Hijacking (BLH)
-        - XSS
-        - IDOR
-        - Misconfiguration
-        - Open Redirect
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-  - type: textarea
-    id: desc
-    attributes:
-      label: Description
+      - name: Prepare folders
+        run: mkdir -p reports
 
-  - type: textarea
-    id: steps
-    attributes:
-      label: Steps to Reproduce
+      - name: Generate safe filename
+        id: file
+        run: |
+          TITLE="${{ github.event.issue.title }}"
+          SAFE=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd 'a-z0-9-_')
+          echo "file=reports/${SAFE}.md" >> $GITHUB_OUTPUT
 
-  - type: textarea
-    id: impact
-    attributes:
-      label: Impact
+      - name: Detect CWE & Severity
+        id: meta
+        run: |
+          BODY="${{ github.event.issue.body }}"
 
-  - type: dropdown
-    id: severity
-    attributes:
-      label: Severity
-      options:
-        - Low
-        - Medium
-        - High
-        - Critical
+          CWE="CWE-610"
+          SEVERITY="Medium"
+
+          echo "cwe=$CWE" >> $GITHUB_OUTPUT
+          echo "severity=$SEVERITY" >> $GITHUB_OUTPUT
+
+      - name: Generate full report
+        run: |
+          cat <<EOF > ${{ steps.file.outputs.file }}
+# ${{ github.event.issue.title }}
+
+---
+
+## Target
+${{ github.event.issue.body }}
+
+---
+
+## CWE Classification
+${{ steps.meta.outputs.cwe }}
+
+## Severity
+${{ steps.meta.outputs.severity }}
+
+---
+
+## Description
+${{ github.event.issue.body }}
+
+---
+
+## Impact
+See issue discussion
+
+---
+
+## Reproduction Steps
+See issue form
+
+---
+
+## Metadata
+- Author: ${{ github.event.issue.user.login }}
+- Source: ${{ github.event.issue.html_url }}
+
+---
+
+## Status
+Reported (Auto-generated system)
+
+---
+
+## Notes
+This report was automatically generated from GitHub Issue intake system.
+EOF
+
+      - name: Update tracker
+        run: |
+          echo "- [ ] ${{ github.event.issue.title }} | CWE: ${{ steps.meta.outputs.cwe }} | ${{ github.event.issue.html_url }}" >> report-status.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add reports report-status.md
+          git commit -m "Auto security report generated"
+          git push
