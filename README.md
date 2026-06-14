@@ -1,33 +1,42 @@
-# 🛡️ Bug Bounty & Security Research Portfolio
+# Security Research Notes
 
-Hi, I'm **Hiragi**, a security enthusiast focusing on web application vulnerabilities and responsible disclosure.
+Hi, I'm Hiragi.
 
-This repository contains my security findings reported to public and government systems, documented for learning and transparency purposes.
-
----
-
-## 📌 About Me
-- Focus: Web Security / OSINT / Vulnerability Research
-- Interest: Broken Link Hijacking, Misconfiguration, Exposure risks
-- Practice: Responsible Disclosure
+This repository contains my notes and findings related to web application security, based on personal learning and responsible disclosure activities.
 
 ---
 
-## 📊 Reports Summary
-
-| # | Vulnerability | Target | Status |
-|--|--------------|--------|--------|
-| 1 | Broken Link Hijacking | Korlantas Polri | Fixed |
-| 2 | Broken Link Hijacking | Diskominfo Salatiga | Fixed |
+## 📌 Focus Area
+- Web application security
+- External link validation issues
+- Vulnerability research and analysis
+- Responsible disclosure practices
 
 ---
 
-## 📂 Reports
+## 📁 Repository Contents
 
-- 📄 [Korlantas Polri BLH Report](./reports/korlantas-blh.md)
-- 📄 [Diskominfo Salatiga BLH Report](./reports/diskominfo-salatiga-blh.md)
+- `reports/` → Documented security findings  
+- `report-tracker.md` → Overview of reported issues  
+- `assets/` → Supporting screenshots and references  
+
+---
+
+## 📊 Current Reports
+
+All findings documented in this repository are based on real-world observations and reported through responsible disclosure channels.
+
+Most common issue types:
+- Broken Link Hijacking (BLH)
+- External social media link misconfigurations
+
+---
+
+## 🧠 Approach
+I focus on understanding how small misconfigurations in web applications can lead to real-world security and trust issues, especially in publicly accessible systems.
 
 ---
 
 ## ⚠️ Disclaimer
-All findings were reported responsibly without exploitation beyond proof of concept and are shared for educational/documentation purposes only.
+All findings are shared strictly for educational and responsible disclosure purposes.  
+No exploitation beyond validation has been performed.
