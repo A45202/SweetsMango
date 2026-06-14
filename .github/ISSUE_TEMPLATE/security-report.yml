@@ -1,0 +1,41 @@
+name: Security Report
+description: Report a security finding
+title: "[SECURITY] "
+labels: ["security"]
+
+body:
+  - type: input
+    id: target
+    attributes:
+      label: Target URL
+      placeholder: https://example.com
+
+  - type: input
+    id: org
+    attributes:
+      label: Organization
+
+  - type: dropdown
+    id: vuln
+    attributes:
+      label: Vulnerability Type
+      options:
+        - Broken Link Hijacking (BLH)
+        - XSS
+        - IDOR
+        - Misconfiguration
+
+  - type: textarea
+    id: desc
+    attributes:
+      label: Description
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
