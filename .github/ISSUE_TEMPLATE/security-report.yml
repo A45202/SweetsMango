@@ -1,0 +1,25 @@
+name: Update Report Status
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Append issue to tracker
+        run: |
+          echo "- [ ] ${{ github.event.issue.title }} | ${{ github.event.issue.html_url }}" >> report-status.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add report-status.md
+          git commit -m "Update report tracker"
+          git push
