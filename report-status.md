@@ -42,12 +42,20 @@ Scope: Government websites (Indonesia)
 - **Notes:** Reported through multiple official channels, no confirmation or response received yet
 
 ---
+### 3. Diskominfo Lampung Selatan
+- **URL:** https://diskominfo.lampungselatankab.go.id/
+- **Vulnerability:** Broken Link Hijacking (BLH) – Instagram
+- **CWE:** CWE-610
+- **Severity:** Medium
+- **Status:** Unresolved
+- **Notes:** Reported through multiple official channels, no confirmation or response received yet
 
+---
 ## 📊 Overview Stats
-- Total Reports: 3  
+- Total Reports: 4  
 - Fixed: 2  
-- Unresolved: 1  
-- Severity: Medium (all cases)
+- Unresolved: 2  
+- Severity: Low to Medium (all cases)
 
 ---
 
