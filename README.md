@@ -1,42 +1,32 @@
-# Security Research Notes
+# SweetsMango
 
-Hi, I'm Hiragi.
+Security research and responsible disclosure portfolio by **Jalu Sahasika Seto**.
 
-This repository contains my notes and findings related to web application security, based on personal learning and responsible disclosure activities.
+Focused on:
 
----
+- Web Application Security
+- OAuth2 / OpenID Connect
+- API Security
+- Vulnerability Research
+- Infrastructure Security
 
-## 📌 Focus Area
-- Web application security
-- External link validation issues
-- Vulnerability research and analysis
-- Responsible disclosure practices
+## Selected Research
 
----
+| Date | Finding | Status |
+|------|---------|--------|
+| 2026 | OAuth2 Dynamic Client Registration / Device Flow | Reported |
+| 2026 | Laravel Ignition RCE Exposure — CVE-2021-3129 | Reported |
+| 2026 | Broken Link Hijacking | Reported |
+| 2026 | Unauthenticated DNS Zone Transfer | Reported |
 
-## 📁 Repository Contents
+> Severity and impact are subject to vendor validation.
 
-- `reports/` → Documented security findings  
-- `report-tracker.md` → Overview of reported issues  
-- `assets/` → Supporting screenshots and references  
+## Reports
 
----
-
-## 📊 Current Reports
-
-All findings documented in this repository are based on real-world observations and reported through responsible disclosure channels.
-
-Most common issue types:
-- Broken Link Hijacking (BLH)
-- External social media link misconfigurations
-
----
-
-## 🧠 Approach
-I focus on understanding how small misconfigurations in web applications can lead to real-world security and trust issues, especially in publicly accessible systems.
-
----
-
-## ⚠️ Disclaimer
-All findings are shared strictly for educational and responsible disclosure purposes.  
-No exploitation beyond validation has been performed.
+```text
+reports/
+└── 2026/
+    ├── purwakarta-oauth-dcr/
+    ├── laravel-ignition-cve-2021-3129/
+    ├── broken-link-hijacking/
+    └── dns-zone-transfer/
