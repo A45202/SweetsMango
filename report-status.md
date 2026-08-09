@@ -1,177 +1,37 @@
-🛡️ Government Security Report Tracker
-
-«A public research log documenting security findings identified on Indonesian government websites and reported through responsible disclosure.»
-
----
-
-📊 Overview
-
-- Total Reports: 5
-- Fixed: 2
-- Unresolved: 2
-- Under Verification: 1
-- Severity Range: Low → Critical
-- Scope: Indonesian Government Websites
-- Method: Responsible Disclosure
-
-Last Updated: August 2026
-
----
-
-📋 Reported Findings
-
-🟢 01 — Korlantas Polri – SIM Website
-
-URL: https://digitalkorlantas.polri.go.id/sim/
-
-Vulnerability: Broken Link Hijacking (BLH)
-CWE: CWE-610
-Severity: Low
-Status: Fixed
-
-Notes:
-Reported via Gov-CSIRT (BSSN). The issue was subsequently resolved.
-
----
-
-🟢 02 — Diskominfo Salatiga
-
-URL: https://diskominfo.salatiga.go.id/
-
-Vulnerability: Broken Link Hijacking (BLH) – Twitter/X
-CWE: CWE-610
-Severity: Low
-Status: Fixed
-
-Notes:
-Reported directly to the government administrator. The issue was resolved following disclosure.
-
----
-
-🟠 03 — Diskominfo Kampar & Pemkab Kampar
-
-URL: https://diskominfosandi.kamparkab.go.id/
-
-Vulnerability: Broken Link Hijacking (BLH) – Instagram
-CWE: CWE-610
-Severity: Low
-Status: Unresolved
-
-Notes:
-Reported through multiple official channels. No confirmation or response has been received yet.
-
----
-
-🟠 04 — Diskominfo Lampung Selatan
-
-URL: https://diskominfo.lampungselatankab.go.id/
-
-Vulnerability: Broken Link Hijacking (BLH) – Instagram
-CWE: CWE-610
-Severity: Low
-Status: Unresolved
-
-Notes:
-Reported through multiple official channels. No confirmation or response has been received yet.
-
----
-
-🔴 05 — Pemerintah Kabupaten Garut – Yanlik
-
-URL: https://yanlik.setda.garutkab.go.id/
-
-Vulnerability: Laravel Ignition RCE Exposure
-CVE: CVE-2021-3129
-Endpoint: "/_ignition/execute-solution"
-Severity: Critical
-Status: Under Verification
-
-Notes:
-The exposed Laravel Ignition endpoint was observed processing attacker-controlled JSON containing a "phar://" URI.
-
-The request resulted in an HTTP "502 Bad Gateway" response.
-
-This behavior is consistent with the vulnerable CVE-2021-3129 processing path being reachable.
-
-Arbitrary PHP code execution was not independently verified.
-
-Confirmation requires verification of the installed Ignition, Laravel, and PHP versions, together with the relevant application configuration.
-
----
-
-📈 Statistics
-
-Severity
-
-- 🔴 Critical: 1
-- 🟠 High: 0
-- 🟡 Medium: 0
-- 🟢 Low: 4
-
-Status
-
-- ✅ Fixed: 2
-- ⚠️ Unresolved: 2
-- 🔎 Under Verification: 1
-
----
-
-🔐 Disclosure Principles
-
-All findings documented in this repository are reported under responsible disclosure principles.
-
-Testing is intentionally limited to:
-
-- Non-destructive validation
-- Minimal proof-of-concept requests
-- No unauthorized persistence
-- No data modification
-- No credential harvesting
-- No denial-of-service testing
-- No post-exploitation activity
-
-Sensitive exploitation details are not published when doing so could unnecessarily increase risk to affected systems.
-
----
-
-🎯 Scope
-
-This tracker focuses on security findings affecting publicly accessible Indonesian government websites and services.
-
-The purpose of this repository is to document responsible security research and remediation status, not to facilitate exploitation.
-
----
-
-📝 Status Definitions
-
-✅ Fixed
-
-The reported issue has been resolved or mitigated.
-
-⚠️ Unresolved
-
-The issue has been reported but remains unresolved or no confirmation has been received.
-
-🔎 Under Verification
-
-The finding requires additional confirmation from the affected organization or further technical validation.
-
----
-
-⚠️ Disclaimer
-
-This repository is a research and disclosure tracker.
-
-All testing is intended to be conducted within a responsible-disclosure context.
-
-No attempt is made to gain unauthorized access, obtain sensitive information, disrupt services, or maintain persistence.
-
-Organizations mentioned in this repository are encouraged to independently verify reported findings and apply appropriate remediation.
-
----
-
-📚 References
-
-- "CVE-2021-3129 — NVD" (https://nvd.nist.gov/vuln/detail/CVE-2021-3129)
-- "Facade Ignition Security Advisory" (https://github.com/facade/ignition/security/advisories/GHSA-7vp6-m54v-3xfh)
-- "CWE-610 — MITRE" (https://cwe.mitre.org/data/definitions/610.html)
+# Security Report Status
+
+A tracker for vulnerability research and responsible disclosure reports.
+
+## 2026
+
+| Finding | Category | Severity | Status |
+|---|---|---|---|
+| Laravel Ignition — CVE-2021-3129 | Potential RCE | Critical / Pending Validation | Reported |
+| OAuth2 Dynamic Client Registration / Device Flow | OAuth2 / OIDC | Critical / Pending Validation | Reported |
+| Unauthenticated DNS Zone Transfer (AXFR) | DNS Security | High / Pending Validation | Reported |
+| Broken Link Hijacking | Web Security | Pending Validation | Reported |
+
+## Status Legend
+
+| Status | Meaning |
+|---|---|
+| Research | Under investigation |
+| Reported | Report submitted to the relevant organization |
+| Acknowledged | Organization has acknowledged the report |
+| Pending Validation | Awaiting technical validation |
+| Fixed | Remediation has been implemented |
+| Closed | Report has been closed |
+
+## Notes
+
+- Severity may change after technical validation by the affected organization.
+- "Potential RCE" does not indicate confirmed code execution unless independently validated.
+- Public reports are sanitized to remove credentials, tokens, private information, and sensitive infrastructure details.
+- No active credentials or authentication material should be stored in this repository.
+
+## Reports
+
+- [Laravel Ignition — CVE-2021-3129](./reports/2026/laravel-ignition-cve-2021-3129/report.md)
+- [OAuth2 Dynamic Client Registration / Device Flow](./reports/2026/purwakarta-oauth-dcr/report.md)
+- [Unauthenticated DNS Zone Transfer](./reports/2026/dns-zone-transfer/report.md)
+- [Broken Link Hijacking](./reports/2026/broken-link-hijacking/report.md)
