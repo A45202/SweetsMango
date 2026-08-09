@@ -21,8 +21,3 @@ The following information must not be published:
 - Private keys
 - Database credentials
 - Personal information
-
-Public PoCs should use:
-
-```text
-[REDACTED]
